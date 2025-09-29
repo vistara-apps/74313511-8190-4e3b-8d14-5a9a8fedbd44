@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyberpunk Gaming Theme Variables */
+:root {
+  --color-bg: #1a0d2e;
+  --color-fg: #ffffff;
+  --color-accent: #00ff41;
+  --color-surface: #2d1b4e;
+  --color-primary: #6c5ce7;
+  --color-secondary: #a29bfe;
+  --color-success: #00ff41;
+  --color-warning: #fdcb6e;
+  --color-error: #e84393;
+}
+
+/* CELO Theme */
+[data-theme="celo"] {
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-accent: #fbcc5c;
+  --color-surface: #1a1a1a;
+  --color-primary: #fbcc5c;
+  --color-secondary: #35d07f;
+  --color-success: #35d07f;
+  --color-warning: #fbcc5c;
+  --color-error: #ff6b6b;
+}
+
+/* SOLANA Theme */
+[data-theme="solana"] {
+  --color-bg: #1a0d2e;
+  --color-fg: #ffffff;
+  --color-accent: #9945ff;
+  --color-surface: #2d1b4e;
+  --color-primary: #9945ff;
+  --color-secondary: #14f195;
+  --color-success: #14f195;
+  --color-warning: #ffb800;
+  --color-error: #ff6b6b;
+}
+
+/* BASE Theme */
+[data-theme="base"] {
+  --color-bg: #0052ff;
+  --color-fg: #ffffff;
+  --color-accent: #0052ff;
+  --color-surface: #1e40af;
+  --color-primary: #0052ff;
+  --color-secondary: #3b82f6;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+/* COINBASE Theme */
+[data-theme="coinbase"] {
+  --color-bg: #0d1421;
+  --color-fg: #ffffff;
+  --color-accent: #0052ff;
+  --color-surface: #1e293b;
+  --color-primary: #0052ff;
+  --color-secondary: #3b82f6;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+@layer base {
+  * {
+    @apply border-gray-800;
+  }
+  
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(108, 92, 231, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(162, 155, 254, 0.05) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface bg-opacity-80 backdrop-blur-sm border border-accent border-opacity-20;
+  }
+  
+  .neon-border {
+    @apply border border-accent shadow-neon;
+  }
+  
+  .cyber-button {
+    @apply bg-gradient-to-r from-primary to-accent text-fg font-bold py-3 px-6 transform transition-all duration-200 hover:scale-105 active:scale-95;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
+  }
+  
+  .cyber-card {
+    @apply glass-card p-6 transform transition-all duration-200 hover:scale-105;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% calc(100% - 15px), 15px 100%, 0 100%);
+  }
+  
+  .spin-wheel {
+    @apply relative w-64 h-64 rounded-full border-4 border-accent shadow-neon-lg;
+    background: conic-gradient(
+      from 0deg,
+      #ff6b6b 0deg 60deg,
+      #6c5ce7 60deg 120deg,
+      #00ff41 120deg 180deg,
+      #fdcb6e 180deg 240deg,
+      #a29bfe 240deg 300deg,
+      #e84393 300deg 360deg
+    );
+  }
+  
+  .progress-glow {
+    @apply bg-gradient-to-r from-accent to-primary;
+    box-shadow: 0 0 10px var(--color-accent);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px var(--color-accent);
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+}
